@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat';
   }
   button {
+    border: none;
     padding: 0;
     cursor: pointer;
     font-family: 'Montserrat';
