@@ -1,5 +1,7 @@
 import React from 'react';
+import { graphql } from 'gatsby' 
 import styled from 'styled-components';
+import slugify from 'slugify';
 import PageInfo from '../components/PageInfo/PageInfo';
 import ArticlePreview from '../components/ArticlesPreview/ArticlesPreview';
 
@@ -15,40 +17,31 @@ const ArticlesWrapper = styled.div`
 `;
 
 const ArticlesPage = ({data}) => {
-const {allMdx: {nodes}} = data;
-
 return (
     <>
     <PageInfo title={pageData.title} description={pageData.description} />
    
     <ArticlesWrapper>
-    {nodes.map(article =>(
-   <ArticlePreview key={article.frontmatter.slug} title={article.frontmatter.title} excerpt={article.excerpt} image={article.frontmatter.featuredImage.childImageSharp.fluid} slug={article.frontmatter.slug} />
+    {data.allDatoCmsArticle.nodes.map(article =>(
+   <ArticlePreview key={article.title} title={article.title} image={article.featuredimage.fluid} slug={slugify(article.title, {lower: true})} />
     ))}
     </ArticlesWrapper>
 </>
 )
 }
 export const query = graphql`
-  {
-    allMdx {
-      nodes {
-        frontmatter {
-          title
-          author
-          slug
-          featuredImage {
-            childImageSharp {
-                fluid(maxHeight: 400, maxWidth: 700, quality: 100) {
-                    ...GatsbyImageSharpFluid_tracedSVG
-                  }
-            }
-          }
+{
+  allDatoCmsArticle {
+    nodes {
+      title
+      featuredimage {
+        fluid(maxWidth: 500) {
+          ...GatsbyDatoCmsFluid_tracedSVG
         }
-        excerpt(pruneLength: 50)
       }
     }
   }
+}
 `
 
 export default ArticlesPage;

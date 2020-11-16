@@ -1,34 +1,59 @@
 import React from 'react';
 import Image from 'gatsby-image';
-import { MDXRenderer } from "gatsby-plugin-mdx"
+
 
 export const query = graphql`
-query querySunglePost($slug: String!) {
-    mdx(frontmatter: {slug: {eq: $slug}}) {
-      frontmatter {
+query querySinglePost($id: String!) {
+    datoCmsArticle(id: {eq: $id}) {
         author
-        slug
         title
-        featuredImage {
-          childImageSharp {
+        featuredimage {
             fixed(width: 500) {
-              ...GatsbyImageSharpFixed_tracedSVG
+                ...GatsbyDatoCmsFixed_tracedSVG
+            }
+          }
+        paragraph {
+          ... on DatoCmsHeading {
+            id
+            headingContent
+          }
+          ... on DatoCmsParagraph {
+            id
+            paragraphContent
+          }
+          ... on DatoCmsImage {
+            id
+            image {
+                fixed(width: 500) {
+                    ...GatsbyDatoCmsFixed_tracedSVG 
+                }
             }
           }
         }
       }
-      body
-    }
   }
 `
 
 const PostPage = ({ data }) => (
     <>
     {console.log(data)}
-    <h1>{data.mdx.frontmatter.title}</h1>
-    <p>{data.mdx.frontmatter.author}</p>
-    <Image fixed={data.mdx.frontmatter.featuredImage.childImageSharp.fixed} />
-<MDXRenderer>{data.mdx.body}</MDXRenderer>
+    <h1>{data.datoCmsArticle.title}</h1>
+<h2>{data.datoCmsArticle.author}</h2>
+    <Image fixed={data.datoCmsArticle.featuredimage.fixed} /> 
+<div>{data.datoCmsArticle.paragraph.map(item => {
+    const paragraphValues = Object.keys(item)[2];
+
+    switch (paragraphValues) {
+        case 'headingContent':
+            return <p key={item.id}>{item.headingContent}</p> ;
+        case 'paragraphContent':
+            return <p key={item.id}>{item.paragraphContent}</p>;
+        case 'image':
+            return <Image key={item.id} fixed={item.image.fixed}/>
+    }
+    console.log(paragraphValues)
+})}</div>
+{console.log(data.datoCmsArticle.paragraph)}
     </>
 )
 
