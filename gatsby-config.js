@@ -12,16 +12,26 @@ module.exports = {
     `gatsby-plugin-layout`,
     `gatsby-plugin-mdx`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Montserrat`,
-            variants: [`400`, `600`, `700`]
-          },
+          `montserrat`,
+          `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
         ],
+        display: 'swap'
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `Oswald`,
+    //         subsets: [`latin`],
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-source-dev`,
       options: {

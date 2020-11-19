@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
     // Create blog post pages.
     result.data.allDatoCmsArticle.nodes.forEach(post => {
 const slugifyTitle = slugify(post.title, {lower: true});
-console.log(slugifyTitle)
+
       createPage({
         // Path for this page — required
         path: `articles/${slugifyTitle}`,
@@ -34,24 +34,28 @@ console.log(slugifyTitle)
     const blogGalleryTemplate =  path.resolve(`src/layouts/picture.js`);
     const resultGallery = await graphql(`
     query queryCmsGallery {
-      datoCmsPicture {
-        gallery {
-          originalId
+      allDatoCmsPicture {
+        nodes {
+          gallery {
+            originalId
+          }
         }
       }
     }
     `);
 
-    resultGallery.data.datoCmsPicture.gallery.forEach(picture => {
-      const slugifyTitleGallery = slugify(picture.originalId, {lower: true});
-      console.log(slugifyTitleGallery)
-            createPage({
-              // Path for this page — required
-              path: `gallery/${slugifyTitleGallery}`,
-              component: blogGalleryTemplate,
-              context: {
-                originalId: picture.originalId,
-              },
+    resultGallery.data.allDatoCmsPicture.nodes.forEach(arrGallery => {
+      arrGallery.gallery.forEach(picture => {
+        const slugifyTitleGallery = slugify(picture.originalId, {lower: true});
+        
+              createPage({
+                // Path for this page — required
+                path: `gallery/${slugifyTitleGallery}`,
+                component: blogGalleryTemplate,
+                context: {
+                  originalId: picture.originalId,
+                },
+              })
             })
-          })
+      })
   }
