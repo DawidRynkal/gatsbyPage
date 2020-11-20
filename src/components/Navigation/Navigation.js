@@ -49,10 +49,10 @@ const Navigation = () => (
         <Link to="/articles">articles</Link>
         </NavigationListItem>
         <NavigationListItem>
-        <Link to="/contact">contact</Link>
+        <Link to="/gallery">gallery</Link>
         </NavigationListItem>
         <NavigationListItem>
-        <Link to="/gallery">gallery</Link>
+        <Link to="/contact">contact</Link>
         </NavigationListItem>
     </NavigationList>
 </NavigationWrapper>
