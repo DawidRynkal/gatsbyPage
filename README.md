@@ -1,3 +1,54 @@
+# Blog with Gatsby
+
+The project was created using Gatsby technology. Building internet applications in this technology is based on React. It allows you to easily optimize the website code.
+DatoCms, i.e. headless cms, is used as cms to support the blog.
+
+### Demo link on Netlify
+https://dawrynblog.netlify.app/
+
+![about](https://user-images.githubusercontent.com/50556211/100118627-4f83fa00-2e76-11eb-9459-841ce2817f54.png)
+
+# Technologies: 
+- React
+- Gatsby
+- GraphQl
+- Formik
+- CSS
+- Styled components
+- JavaScript
+- npm
+
+# Setup 
+To run this project, install it locally using npm: 
+```
+$ npm install 
+$ gatsby develop
+```
+# Illustrations: 
+
+### Home page
+![home](https://user-images.githubusercontent.com/50556211/100118596-472bbf00-2e76-11eb-93e7-a1eb5e48e743.png)
+
+### About blog author
+![about](https://user-images.githubusercontent.com/50556211/100118627-4f83fa00-2e76-11eb-9459-841ce2817f54.png)
+
+### Articles page
+![articles](https://user-images.githubusercontent.com/50556211/100118655-56ab0800-2e76-11eb-938d-35e7846f158e.png)
+### After click
+![articles2](https://user-images.githubusercontent.com/50556211/100118682-5f9bd980-2e76-11eb-898e-ab419c87a5c0.png)
+
+### Gallery page
+![gallery](https://user-images.githubusercontent.com/50556211/100118703-6591ba80-2e76-11eb-8bd4-eb5d9f5026d5.png)
+### After click
+![gallery2](https://user-images.githubusercontent.com/50556211/100118774-73474000-2e76-11eb-8c84-efc11e22de22.png)
+
+### Contact page with Formik
+![contact](https://user-images.githubusercontent.com/50556211/100118824-7c381180-2e76-11eb-9af0-aeb06bb4c6e6.png)
+
+### DatoCms 
+![dato](https://user-images.githubusercontent.com/50556211/100119539-42b3d600-2e77-11eb-915e-e41b89d4cd6c.png)
+
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
